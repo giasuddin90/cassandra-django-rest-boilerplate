@@ -3,7 +3,7 @@ Django==3.2.3
 djangorestframework==3.12.4
 grpcio==1.38.0
 protobuf==3.17.1
-pydgraph==21.3.0
+cassandra-driver
 pytz==2021.1
 six==1.16.0
 uWSGI==2.0.18
