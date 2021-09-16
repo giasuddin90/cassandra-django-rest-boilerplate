@@ -34,4 +34,26 @@ class CassandraBase(object):
             client = None
             return client
 
+    @classmethod
+    def create_table(cls, table):
+        db_client = cls.db_connection()
+        try:
+            sync_schema = management.sync_table(table)
+            return sync_schema
+        except Exception as ex:
+            # logger
+            Log.general_log(ex, "cassandra_table_sync_error")
+            return None
+
+    @classmethod
+    def drop_table(cls, table):
+        db_client = cls.db_connection()
+        try:
+            sync_schema = management.drop_table(table)
+            return sync_schema
+        except Exception as ex:
+            # logger
+            Log.general_log(ex, "cassandra_table_drop_error")
+            return None
+
 
