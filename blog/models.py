@@ -1,3 +1,14 @@
-from django.db import models
+from cassandra.cqlengine import columns
+from cassandra.cqlengine.models import Model
 
-# Create your models here.
+
+class Blog(Model):
+    id = columns.UUID(primary_key=True)
+    title = columns.Text()
+    description = columns.Text()
+    summery = columns.Text()
+    category = columns.Text()
+    created_at = columns.DateTime()
+
+
+
