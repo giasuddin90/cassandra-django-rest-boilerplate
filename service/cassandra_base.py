@@ -23,15 +23,15 @@ class CassandraBase(object):
         try:
             if connection.session is not None:
                 print('\n   Already connected ')
-                return "Already Connected"
+                return True
             else:
                 setup([cls.db_host], cls.db_keyspace, auth_provider=auth_provider, protocol_version=4,
                       load_balancing_policy=RoundRobinPolicy())
-                return "New Connection"
+                return True
         except Exception as ex:
             # logger
             Log.general_log(ex, "cassandra_connection_error")
-            client = None
+            client = False
             return client
 
     @classmethod
@@ -56,5 +56,4 @@ class CassandraBase(object):
             # logger
             Log.general_log(ex, "cassandra_table_drop_error")
             return None
-
 
