@@ -2,7 +2,7 @@ from cassandra.cqlengine import columns
 from cassandra.cqlengine.models import Model
 
 
-class Blog(Model):
+class Blogs(Model):
     id = columns.UUID(primary_key=True)
     title = columns.Text()
     description = columns.Text()

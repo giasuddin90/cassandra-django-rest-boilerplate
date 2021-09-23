@@ -37,6 +37,7 @@ class CassandraBase(object):
     @classmethod
     def create_table(cls, table):
         db_client = cls.db_connection()
+        print(db_client)
         try:
             sync_schema = management.sync_table(table)
             return sync_schema

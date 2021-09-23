@@ -17,9 +17,13 @@ source cassBase/bin/activate
 ```sh
 docker pull cassandra:latest
 docker network create cass-cluster-network
-docker run --name nodeA --network cass-cluster-network cassandra
+docker run -d --name nodeA --network cass-cluster-network cassandra
 docker stop nodeA
 docker rm nodeA
+```
+
+```sh
+CREATE KEYSPACE IF NOT EXISTS store WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : '1' };
 ```
 
 Make env file
